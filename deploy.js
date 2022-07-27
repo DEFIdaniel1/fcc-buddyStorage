@@ -41,7 +41,7 @@ async function main() {
 
 	//Adding a new number is a transaction that costs gas
 	const addNewNumber = await contract.store("25")
-	//   const addNewNumberReceipt = await addNewNumber.wait(1); don't need this, but if you want/need a receipt can call here too
+	const addNewNumberReceipt = await addNewNumber.wait(1) //this will make sure the number changes before retrieving it!
 	const updatedNumber = await contract.retrieveNumber()
 	console.log(`New number is: ${updatedNumber}`)
 }
